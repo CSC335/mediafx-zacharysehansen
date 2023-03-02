@@ -1,9 +1,12 @@
+//Zachary Hansen
 package PlaySongDemo;
 
 /**
  * This code will play any song assuming that file is in folder songfiles. 
  * 
  * Programmer Rick Mercer
+ * 
+ * Edited By Zachary Hansen
  */
 import java.io.File;
 import java.net.URI;
@@ -28,13 +31,16 @@ public class PlayAnMP3 extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     BorderPane pane = new BorderPane();
-    String path = "songfiles/Capture.mp3";
+    // changed the position of scene in the code
+    Scene scene = new Scene(pane, 255, 85); // 255 pixels wide, 85 pixels tall
+    // I, Zachary Hansen, have changed the song for the string path
+    String path = "songfiles/DanseMacabreViolinHook.mp3";
     pane.setCenter( new Label(path));
     playASong(path);
-    // Put the pane in a sized Scene and show the GUI
-    Scene scene = new Scene(pane, 255, 85); // 255 pixels wide, 85 pixels tall
+    
+
     stage.setScene(scene);
-    // Don't forget to show the running app:
+   
     stage.show();
   }
 
@@ -58,8 +64,9 @@ public class PlayAnMP3 extends Application {
   private class Waiter implements Runnable {
     @Override
     public void run() {
-      songsPlayed++;
       System.out.println("Song ended, play song #" + songsPlayed);
+      //changed the order of the run method
+      songsPlayed++;
       Platform.exit();
     }
   }
